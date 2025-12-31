@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 import { useProducts } from '../contexts/ProductContext';
 import { LoadingSpinner } from '../components/LoadingSpinner';
+import { Product } from '../types/index';
 
 export const Products: React.FC = () => {
   const { products, localProducts, loading, error, fetchProducts } = useProducts();
