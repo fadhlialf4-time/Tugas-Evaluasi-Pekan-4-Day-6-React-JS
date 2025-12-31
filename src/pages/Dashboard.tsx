@@ -3,6 +3,7 @@ import { ProductCard } from '../components/ProductCard';
 import { ProductForm } from '../components/ProductForm';
 import { useProducts } from '../contexts/ProductContext';
 import { useProductStats } from '../hooks/useProducts';
+import { Product } from '../types';
 
 export const Dashboard: React.FC = () => {
   const { localProducts, addProduct, updateProduct, deleteProduct } = useProducts();
