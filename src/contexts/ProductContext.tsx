@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, ReactNode, useCallback } from 'react';
-import { Product, ProductState } from '../types';
+import { Product, ProductState } from '../types/index';
 
 const ProductContext = createContext<ProductState | undefined>(undefined);
 
