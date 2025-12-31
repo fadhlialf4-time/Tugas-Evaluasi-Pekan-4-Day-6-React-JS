@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useProducts } from '../contexts/ProductContext';
-import { Product } from '../types';
+import { Product } from '../types/index';
 
 export const useProductStats = () => {
   const { products, localProducts } = useProducts();
