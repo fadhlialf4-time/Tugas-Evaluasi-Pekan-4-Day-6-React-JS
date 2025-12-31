@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-// import { Product } from '../types/index';
+import { Product } from '../types/index';
 
 interface ProductFormProps {
   product?: Product;
