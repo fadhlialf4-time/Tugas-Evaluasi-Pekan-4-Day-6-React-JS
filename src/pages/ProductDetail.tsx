@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useProducts } from '../contexts/ProductContext';
-import { Product } from '../types'; // TAMBAHKAN IMPORT
+import { Product } from '../types';
 
 export const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
