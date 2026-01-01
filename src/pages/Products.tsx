@@ -1,9 +1,9 @@
-// src/pages/Products.tsx
 import React, { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 import { useProducts } from '../contexts/ProductContext';
 import { LoadingSpinner } from '../components/LoadingSpinner';
+import { Product } from '../types/index';
 
 export const Products: React.FC = () => {
   const { products, localProducts, loading, error, fetchProducts } = useProducts();
@@ -28,7 +28,7 @@ export const Products: React.FC = () => {
   }, [allProducts, searchTerm, selectedCategory]);
 
   const categories = useMemo(() => {
-    const uniqueCategories = ['all', ...new Set(allProducts.map(p => p.category))];
+    const uniqueCategories = ['all', ...new Set(allProducts.map((p: Product) => p.category))];
     return uniqueCategories.sort();
   }, [allProducts]);
 

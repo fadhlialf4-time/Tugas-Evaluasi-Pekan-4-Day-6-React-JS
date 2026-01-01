@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-// import { Product } from '../types/index';
+import { Product } from '../types/index'
 
 interface ProductFormProps {
   product?: Product;
@@ -18,6 +18,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     description: '',
     category: '',
     image: '',
+    rating: {
+      rate: 0,
+      count: 0
+    }
   });
 
   useEffect(() => {
@@ -28,6 +32,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         description: product.description,
         category: product.category,
         image: product.image,
+        rating: product.rating
       });
     }
   }, [product]);
@@ -38,6 +43,19 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       setFormData(prev => ({
         ...prev,
         [name]: name === 'price' ? parseFloat(value) || 0 : value,
+      }));
+    },
+    []
+  );
+
+  const handleRatingChange = useCallback(
+    (field: 'rate' | 'count', value: string) => {
+      setFormData(prev => ({
+        ...prev,
+        rating: {
+          ...prev.rating,
+          [field]: field === 'rate' ? parseFloat(value) || 0 : parseInt(value) || 0
+        }
       }));
     },
     []
@@ -104,6 +122,28 @@ export const ProductForm: React.FC<ProductFormProps> = ({
           value={formData.image}
           onChange={handleChange}
           required
+        />
+      </div>
+      <div className="form-group">
+        <label>Rating (0-5)</label>
+        <input
+          type="number"
+          value={formData.rating.rate}
+          onChange={(e) => handleRatingChange('rate', e.target.value)}
+          required
+          step="0.1"
+          min="0"
+          max="5"
+        />
+      </div>
+      <div className="form-group">
+        <label>Review Count</label>
+        <input
+          type="number"
+          value={formData.rating.count}
+          onChange={(e) => handleRatingChange('count', e.target.value)}
+          required
+          min="0"
         />
       </div>
       <div className="form-actions">

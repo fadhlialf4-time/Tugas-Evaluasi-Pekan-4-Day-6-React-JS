@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useProducts } from '../contexts/ProductContext';
+import { Product } from '../types/index'
 
 export const useProductStats = () => {
   const { products, localProducts } = useProducts();
@@ -9,8 +10,8 @@ export const useProductStats = () => {
   }, [products, localProducts]);
 
   const totalValue = useMemo(() => {
-    const apiValue = products.reduce((sum, product) => sum + product.price, 0);
-    const localValue = localProducts.reduce((sum, product) => sum + product.price, 0);
+    const apiValue = products.reduce((sum: number, product: Product) => sum + product.price, 0);
+    const localValue = localProducts.reduce((sum: number, product: Product) => sum + product.price, 0);
     return (apiValue + localValue).toFixed(2);
   }, [products, localProducts]);
 

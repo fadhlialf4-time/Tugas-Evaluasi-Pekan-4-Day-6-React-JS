@@ -1,4 +1,5 @@
-import React, { createContext, useState, useContext, AuthState, useCallback } from 'react';
+import React, { createContext, useState, useContext, ReactNode, useCallback } from 'react';
+import { User, AuthState } from '../types/index'
 
 const AuthContext = createContext<AuthState | undefined>(undefined);
 

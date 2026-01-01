@@ -3,6 +3,7 @@ import { ProductCard } from '../components/ProductCard';
 import { ProductForm } from '../components/ProductForm';
 import { useProducts } from '../contexts/ProductContext';
 import { useProductStats } from '../hooks/useProducts';
+import { Product } from '../types/index';
 
 export const Dashboard: React.FC = () => {
   const { localProducts, addProduct, updateProduct, deleteProduct } = useProducts();
@@ -77,7 +78,7 @@ export const Dashboard: React.FC = () => {
       )}
 
       <div className="products-grid">
-        {localProducts.map(product => (
+        {localProducts.map((product: Product) => (
           <ProductCard
             key={product.id}
             product={product}
